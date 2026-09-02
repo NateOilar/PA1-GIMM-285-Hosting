@@ -1,0 +1,183 @@
+/** Grid system - https://www.w3schools.com/css/css_rwd_grid.asp **/
+* {
+    box-sizing: border-box;
+}
+
+/* Page styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #2b2b2b, #3b3b3b);
+    margin: 0;
+    color: #f5f5f5;
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* Labels */
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Container spacing */
+.container {
+    margin-top: 30px;
+    background-color: #ffffff;
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Grid (only applies at desktop) */
+@media only screen and (min-width: 768px) {
+
+    .col-1 { width: 8.33%; }
+    .col-2 { width: 16.66%; }
+    .col-3 { width: 25%; }
+    .col-4 { width: 33.33%; }
+    .col-5 { width: 41.66%; }
+    .col-6 { width: 50%; }
+    .col-7 { width: 58.33%; }
+    .col-8 { width: 66.66%; }
+    .col-9 { width: 75%; }
+    .col-10 { width: 83.33%; }
+    .col-11 { width: 91.66%; }
+    .col-12 { width: 100%; }
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Form inputs */
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+/* Button */
+button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+    cursor: pointer;
+}
+
+/* Table container scroll */
+.overflow {
+    overflow-x: auto;
+}
+
+/* Dark table */
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+}
+
+/* Header */
+th {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Cells */
+th, td {
+    border: 1px solid #444;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    overflow-wrap: break-word;
+}
+
+/* Zebra rows */
+tr:nth-child(even) {
+    background-color: #333;
+}
+
+tr:nth-child(odd) {
+    background-color: #2b2b2b;
+}
+
+/* Hover effect (nice touch) */
+tr:hover {
+    background-color: #444;
+}
+
+/* Top ribbon */
+.ribbon {
+    height: 12px;
+    background-color: #1E141F;
+}
+
+/* Navbar spacing */
+.navBar {
+    margin-bottom: 15px;
+}
+
+#classes {
+    margin-top: 40px;
+    padding: 15px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+}
+
+/* spacing between rows */
+.row {
+    margin-bottom: 15px;
+}
+
+/* highlight inputs when clicked */
+input:focus,
+select:focus {
+    border-color: #4CAF50;
+}
+
+/* links in table */
+td a {
+    color: #9fd3ff;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* banners centered */
+.alert {
+    text-align: center;
+    margin: 15px auto;
+}
+
+/* simple divider */
+hr {
+    margin: 20px 0;
+}

@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Game Devs & their Creations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='assets/css/style.css' />
+</head>
+
+<body>
+    <div class='ribbon'></div>
+    <div class="navBar px-3">
+        <a href="../index.html" class="btn btn-secondary mt-3 back-btn">← Back to Home</a>
+    </div>
+    <h1>Game Devs & their Creations</h1>
+
+    <div id="error-banner" class="alert alert-danger d-none">
+        Please fix the errors below.
+    </div>
+
+    <div id="success-banner" class="alert alert-success d-none">
+        Entry submitted successfully!
+    </div>
+
+    <hr />
+
+    <div class="container">
+
+        <div class='row'>
+            <div class='col-2'>
+                <label>Development Studio</label>
+            </div>
+            <div class='col-10'>
+                <input id='studio' type='text' />
+                <div id="studio-error" style="color:red;"></div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-2'>
+                <label>Country</label>
+            </div>
+            <div class='col-10'>
+                <input id='country' type='text' />
+                <div id="country-error" style="color:red;"></div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-2'>
+                <label>Province</label>
+            </div>
+            <div class='col-10'>
+                <input id='province' type='text' />
+                <div id="province-error" style="color:red;"></div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-2'>
+                <label>Game</label>
+            </div>
+            <div class='col-10'>
+                <input id='game' type='text' />
+                <div id="game-error" style="color:red;"></div>
+            </div>
+        </div>
+
+        <div class='row mb-3'>
+            <div class='col-2'>
+                <label>Genre</label>
+            </div>
+            <div class='col-10'>
+                <select id='genre'>
+                    <option value=''>All Genres</option>
+                    <option value='action'>Action</option>
+                    <option value='adventure'>Adventure</option>
+                    <option value='mmorpg'>MMORPG</option>
+                    <option value='fps'>FPS</option>
+                    <option value='strategy'>Strategy</option>
+                    <option value='simulation'>Simulation</option>
+                    <option value='sports-racing'>Sports/Racing</option>
+                    <option value='puzzle'>Puzzle</option>
+                    <option value='horror'>Horror</option>
+                    <option value='platformer'>Platformer</option>
+                </select>
+                <div id="genre-error" style="color:red;"></div>
+            </div>
+        </div>
+
+        <div class='row mb-3'>
+            <div class='col-2'>
+                <label>Art Style</label>
+            </div>
+            <div class='col-10'>
+                <select id='art_style'>
+                    <option value=''>All Art Styles</option>
+                    <option value='realistic'>Realistic</option>
+                    <option value='cartoon'>Cartoon</option>
+                    <option value='pixelart'>Pixel Art</option>
+                    <option value='anime'>Anime</option>
+                    <option value='low-poly'>Low-Poly</option>
+                </select>
+                <div id="art_style-error" style="color:red;"></div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-12'>
+                <button id='search'>Submit</button>
+            </div>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <script>
+        const isEmpty = (obj) => Object.keys(obj).length === 0;
+
+        document.getElementById('search').addEventListener('click', (event) => {
+
+            document.getElementById('error-banner').classList.add('d-none');
+            document.getElementById('success-banner').classList.add('d-none');
+
+            // clear previous errors
+            document.getElementById('studio-error').innerText = "";
+            document.getElementById('country-error').innerText = "";
+            document.getElementById('province-error').innerText = "";
+            document.getElementById('game-error').innerText = "";
+            document.getElementById('genre-error').innerText = "";
+            document.getElementById('art_style-error').innerText = "";
+
+            let hasError = false;
+
+            // get values (simple variables)
+            let studio = document.getElementById('studio').value;
+            let country = document.getElementById('country').value;
+            let province = document.getElementById('province').value;
+            let game = document.getElementById('game').value;
+            let genre = document.getElementById('genre').value;
+            let art_style = document.getElementById('art_style').value;
+
+            // basic checks (very readable)
+            if (studio === "") {
+                document.getElementById('studio-error').innerText = "Required";
+                hasError = true;
+            }
+
+            if (country === "") {
+                document.getElementById('country-error').innerText = "Required";
+                hasError = true;
+            }
+
+            if (province === "") {
+                document.getElementById('province-error').innerText = "Required";
+                hasError = true;
+            }
+
+            if (game === "") {
+                document.getElementById('game-error').innerText = "Required";
+                hasError = true;
+            }
+
+            if (genre === "") {
+                document.getElementById('genre-error').innerText = "Required";
+                hasError = true;
+            }
+
+            if (art_style === "") {
+                document.getElementById('art_style-error').innerText = "Required";
+                hasError = true;
+            }
+
+            // stop if any errors
+            if (hasError) {
+                document.getElementById('error-banner').classList.remove('d-none');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("studio", studio);
+            formData.append("country", country);
+            formData.append("province", province);
+            formData.append("game", game);
+            formData.append("genre", genre);
+            formData.append("art_style", art_style);
+
+            //Settings for FETCH API request
+            let fetchSettings = {
+                method: 'POST',
+                body: formData
+            };
+
+            //Send FETCH API request
+            fetch("/developer/", fetchSettings)
+                .then((response) => {
+                    return new Promise((resolve) => response.json()
+                        .then((json) => resolve({
+                            status: response.status,
+                            json,
+                        })
+                        ));
+                })
+                //Logic to display errors on form 
+                .then(({ status, json }) => {
+
+                    if (status === 400) {
+
+                        document.getElementById('error-banner').classList.remove('d-none');
+
+                        for (let error of json.errors) {
+                            document.getElementById(error.path).innerText = error.message;
+                        }
+                        return;
+                    }
+
+                    if (status === 200) {
+                        document.getElementById('success-banner').classList.remove('d-none');
+                    }
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            return;
+        });               
+    </script>
+</body>
+
+</html>
