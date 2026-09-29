@@ -8,7 +8,7 @@ const mysql = require('mysql2/promise');
 const app = express();
 app.use(express.static('public'))
 const upload = multer()
-const port = 80 //Default port to http server
+const port = 8080 //Default port to http server
 
 let connection = null;
 
